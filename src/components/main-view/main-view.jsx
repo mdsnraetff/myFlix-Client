@@ -7,16 +7,16 @@ export const MainView = () => {
 
 
     useEffect(() => {
-        fetch("https://my-flix-movies.herokuapp.com/")
+        fetch("https://my-flix-movies.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data) => {
-                const moviesFromApi = data.docs.map((doc) => {
+                const moviesFromApi = data.map((doc) => {
                     return {
-                        id: doc.key,
-                        title: doc.title,
+                        id: doc._id,
+                        title: doc.Title,
                         image: 'placeholder.jpg',
-                        director: doc.director_name?.[0],
-                        genre: doc.name,
+                        director: doc.Director['Name'],
+                        genre: doc.Genre['Name'],
                     };
                 });
 
