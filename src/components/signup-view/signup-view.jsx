@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(""); s
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
 
