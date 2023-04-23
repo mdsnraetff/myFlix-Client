@@ -5,9 +5,11 @@ import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState(""); s
+    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
+    const storedToken = localStorage.getItem("token");
+    const [token, setToken] = useState(storedToken ? storedToken : null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,7 +21,7 @@ export const SignupView = () => {
             Birthday: birthday
         };
 
-        fetch("https://my-flix-movies.herokuapp.com/", {
+        fetch("https://my-flix-movies.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
