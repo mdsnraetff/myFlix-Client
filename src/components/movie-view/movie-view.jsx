@@ -1,11 +1,3 @@
-import Col from 'react-bootstrap/Col';
-
-<Col md={8}>
-    <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)} />
-</Col>
-
 export const MovieView = ({ movie, onBackClick }) => {
     return (
         <div>
