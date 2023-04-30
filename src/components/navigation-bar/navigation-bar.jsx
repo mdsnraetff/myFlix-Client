@@ -10,37 +10,39 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
 
     const App = () => {
         return (
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand as={Link} to="/">
-                    Movies App
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        {!user && (
-                            <>
-                                <Nav.Link as={Link} to={`/login`}>
-                                    Login
-                                </Nav.Link>
-                                <Nav.Link as={Link} to={`/signup`}>
-                                    Signup
-                                </Nav.Link>
-                            </>
-                        )}
-                        {user && (
-                            <>
-                                <Nav.Link as={Link} to={`/`}>
-                                    Home
-                                </Nav.Link>
-                                <Nav.Link as={Link} to={`/users`}>
-                                    Profile
-                                </Nav.Link>
-                                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
-                            </>
-                        )}
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
+            <Container>
+                <Navbar bg="light" expand="lg">
+                    <Navbar.Brand as={Link} to="/">
+                        Movies App
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            {!user && (
+                                <>
+                                    <Nav.Link as={Link} to={`/login`}>
+                                        Login
+                                    </Nav.Link>
+                                    <Nav.Link as={Link} to={`/signup`}>
+                                        Signup
+                                    </Nav.Link>
+                                </>
+                            )}
+                            {user && (
+                                <>
+                                    <Nav.Link as={Link} to={`/`}>
+                                        Home
+                                    </Nav.Link>
+                                    <Nav.Link as={Link} to={`/users`}>
+                                        Profile
+                                    </Nav.Link>
+                                    <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                                </>
+                            )}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            </Container>
         );
     };
     const container = document.querySelector("#root");
