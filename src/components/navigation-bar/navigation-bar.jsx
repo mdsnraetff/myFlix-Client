@@ -8,10 +8,6 @@ import { Link } from "react-router-dom"
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
 
-    const container = document.querySelector("#root");
-    const root = createRoot(container);
-    root.render(<App />);
-
     const App = () => {
         return (
             <Navbar bg="light" expand="lg">
@@ -47,5 +43,8 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             </Navbar>
         );
     };
+    const container = document.querySelector("#root");
+    const root = createRoot(container);
+    root.render(<App />);
 };
 
