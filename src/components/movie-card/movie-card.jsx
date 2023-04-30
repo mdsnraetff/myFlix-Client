@@ -10,7 +10,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director}</Card.Text>
-                <Link to={`/movies/${xxxxxx(movie.id)}`}>
+                <Link to={`https://my-flix-movies.herokuapp.com/movies/${movie.id}`}>
                     <Button variant="link">Open</Button>
                 </Link>
             </Card.Body>

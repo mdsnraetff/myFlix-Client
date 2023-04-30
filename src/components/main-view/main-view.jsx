@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -55,6 +56,23 @@ export const MainView = () => {
             />
             <Row className="justify-content-md-center">
                 <Routes>
+                    <Route
+                        path="/profile"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace />
+                                ) : (
+                                    <ProfileView user={user} toke={token} movies={movies} onLoggedOut={() => {
+                                        setUser(null);
+                                        setToken(null);
+                                        localStorage.clear();
+                                    }} updateUser={updateUser} />
+                                )
+                                }
+                            </>
+                        }
+                    />
                     <Route
                         path="/signup"
                         element={
