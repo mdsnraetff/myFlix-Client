@@ -11,12 +11,18 @@ import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
+
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
+
+    const updateUser = (user) => {
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+    }
 
 
     useEffect(() => {
@@ -30,13 +36,16 @@ export const MainView = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                const moviesFromApi = data.map((doc) => {
+                const moviesFromApi = movies.map((movie) => {
                     return {
-                        id: doc._id,
-                        title: doc.Title,
-                        image: 'placeholder.jpg',
-                        director: doc.Director['Name'],
-                        genre: doc.Genre['Name'],
+                        id: movie._id,
+                        title: movie.title,
+                        description: movie.description,
+                        image: movie.imageurl,
+                        director: movie.director.name,
+                        directorbio: movie.director.bio,
+                        genre: movie.Genre.name,
+                        genredescription: movie.genre.description,
                     };
                 }, [token]);
 

@@ -42,7 +42,7 @@ export const MovieView = ({ movies }) => {
 
     const removeFavorite = () => {
         fetch(`https://my-flix-movies.herokuapp.com/users/${user.username}/movies/${movieID}`, {
-            methode: "DELETE",
+            method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
             if (response.ok) {
