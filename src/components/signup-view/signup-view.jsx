@@ -30,7 +30,7 @@ export const SignupView = () => {
         }).then((response) => {
             if (response.ok) {
                 alert("Signup successful!");
-                window.location.reload();
+                window.location.replace("/login");
             } else {
                 alert("Signup failed");
             }
@@ -39,7 +39,7 @@ export const SignupView = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formUsername">
+            <Form.Group>
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
                     type="text"
@@ -50,7 +50,7 @@ export const SignupView = () => {
                 />
             </Form.Group>
 
-            <Form.Group controlId="formPassword">
+            <Form.Group>
                 <Form.Label>Password:</Form.Label>
                 <Form.Control
                     type="password"
@@ -59,7 +59,7 @@ export const SignupView = () => {
                     required
                 />
             </Form.Group>
-            <Form.Group controlId="formEmail">
+            <Form.Group>
                 <Form.Label>Email:</Form.Label>
                 <Form.Control
                     type="email"
@@ -68,7 +68,7 @@ export const SignupView = () => {
                     required
                 />
             </Form.Group>
-            <Form.Group controlId="formBirthday">
+            <Form.Group>
                 <Form.Label>Birthday:</Form.Label>
                 <Form.Control
                     type="birthday"

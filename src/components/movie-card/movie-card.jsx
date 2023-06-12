@@ -1,5 +1,7 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
@@ -8,9 +10,9 @@ export const MovieCard = ({ movie, onMovieClick }) => {
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.director}</Card.Text>
-                <Button onClick={() => onMovieClick(movie)} variant="link">
-                    Open
-                </Button>
+                <Link to={`https://my-flix-movies.herokuapp.com/movies/${movie.id}`}>
+                    <Button variant="link">Open</Button>
+                </Link>
             </Card.Body>
         </Card>
     );
