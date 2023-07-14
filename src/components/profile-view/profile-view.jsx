@@ -6,11 +6,11 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthday, setBirthday] = useState("");
-
-
-    let favoriteMovies = movies.filter(movie => user.favoriteMovies.includes(movie.id));
+    const [email, setEmail] = useState(user.Email);
+    const [birthday, setBirthday] = useState(user.Birthday);
+    const favoriteMovies = movies.filter((movie) => {
+        return user.FavoriteMovies.includes(movie.id)
+    });
 
 
     //Update user
@@ -76,9 +76,9 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
             <Card>
                 <Card.Body>
                     <Card.Title>User Info</Card.Title>
-                    <p>Username: {user.username}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Birthday: {user.birthday}</p>
+                    <p>Username: {user.Username}</p>
+                    <p>Email: {user.Email}</p>
+                    <p>Birthday: {user.Birthday}</p>
                 </Card.Body>
             </Card>
             <Button onClick={() => {

@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
     return (
-        <Card className="h-100">
+        <Card className="h-100 text-black">
             <Card.Img variant="top" src={movie.image} />
             <Card.Body>
-                <Card.Title>{movie.title}</Card.Title>
-                <Card.Text>{movie.director}</Card.Text>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>{movie.Director}</Card.Text>
                 <Link to={`https://my-flix-movies.herokuapp.com/movies/${movie.id}`}>
                     <Button variant="link">Open</Button>
                 </Link>
@@ -19,17 +19,16 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 };
 MovieCard.propTypes = {
     movie: PropTypes.shape({
-        title: PropTypes.shape({
-            description: '...',
+        Title: PropTypes.string,
+        Description: PropTypes.string,
+        Director: PropTypes.shape({
+            Name: PropTypes.string,
+            Bio: PropTypes.string,
         }),
-        director: PropTypes.shape({
-            name: '...',
-            bio: '...',
-        }),
-        genre: PropTypes.shape({
-            name: '...',
-            description: '...',
+        Genre: PropTypes.shape({
+            Name: PropTypes.string,
+            Description: PropTypes.string,
         })
     }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+
 };

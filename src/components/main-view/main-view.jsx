@@ -35,23 +35,28 @@ export const MainView = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
-                const moviesFromApi = movies.map((movie) => {
+                const moviesFromApi = data.map((movie) => {
                     return {
                         id: movie._id,
-                        title: movie.title,
-                        description: movie.description,
-                        image: movie.imageurl,
-                        director: movie.director.name,
-                        directorbio: movie.director.bio,
-                        genre: movie.Genre.name,
-                        genredescription: movie.genre.description,
+                        title: movie.Title,
+                        image: movie.ImagePath,
+                        director: {
+                            name: movie.Director.Name,
+                            bio: movie.Director.Bio
+                        },
+                        genre: {
+                            name: movie.Genre.Name,
+                            description: movie.Genre.Description
+                        },
                     };
-                }, [token]);
+                });
 
                 setMovies(moviesFromApi);
+            })
+            .catch((error) => {
+                console.log(error);
             });
-    }, []);
+    }, [token]);
 
     return (
         <BrowserRouter>
@@ -72,7 +77,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : (
-                                    <ProfileView user={user} toke={token} movies={movies} onLoggedOut={() => {
+                                    <ProfileView user={user} toke={token} movies={movies} setUser={setUser} onLoggedOut={() => {
                                         setUser(null);
                                         setToken(null);
                                         localStorage.clear();
@@ -102,7 +107,7 @@ export const MainView = () => {
                         element={
                             <>
                                 {user ? (
-                                    <Navigate to="/" />
+                                    <Navigate to="/movies" />
                                 ) : (
                                     <Col md={5}>
                                         <LoginView
@@ -124,7 +129,11 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movies={movies} />
+                                        <MovieView
+                                            movies={movies}
+                                            user={user}
+                                            setUser={setUser}
+                                            token={token} />
                                     </Col>
                                 )}
                             </>
@@ -141,7 +150,7 @@ export const MainView = () => {
                                 ) : (
                                     <>
                                         {movies.map((movie) => (
-                                            <Col className="mb-5" key={movie.id} md={3}>
+                                            <Col className="mb-5" key={movie.id} md={5}>
                                                 <MovieCard
                                                     movie={movie} />
                                             </Col>
