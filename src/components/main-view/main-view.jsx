@@ -31,7 +31,7 @@ export const MainView = () => {
         }
 
         fetch("https://my-flix-movies.herokuapp.com/movies", {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` },
         })
             .then((response) => response.json())
             .then((data) => {
@@ -39,7 +39,7 @@ export const MainView = () => {
                     return {
                         id: movie._id,
                         title: movie.Title,
-                        image: movie.ImagePath,
+                        image: movie.Image,
                         director: {
                             name: movie.Director.Name,
                             bio: movie.Director.Bio
@@ -52,6 +52,8 @@ export const MainView = () => {
                 });
 
                 setMovies(moviesFromApi);
+
+                console.log('7', moviesFromApi)
             })
             .catch((error) => {
                 console.log(error);
@@ -77,7 +79,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : (
-                                    <ProfileView user={user} toke={token} movies={movies} setUser={setUser} onLoggedOut={() => {
+                                    <ProfileView user={user} token={token} movies={movies} setUser={setUser} onLoggedOut={() => {
                                         setUser(null);
                                         setToken(null);
                                         localStorage.clear();
@@ -107,14 +109,17 @@ export const MainView = () => {
                         element={
                             <>
                                 {user ? (
-                                    <Navigate to="/movies" />
+                                    <Navigate to="/" />
                                 ) : (
                                     <Col md={5}>
                                         <LoginView
                                             onLoggedIn={(user, token) => {
                                                 setUser(user);
                                                 setToken(token);
-                                            }} /> </Col>
+                                            }} />
+                                        or
+                                        <SignupView />
+                                    </Col>
                                 )}
                             </>
                         }

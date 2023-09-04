@@ -3,20 +3,21 @@ import { Button, Col, Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card.jsx";
+import { useState, useEffect } from "react";
 
 export const MovieView = ({ movies, user, token }) => {
-    const { movieID } = useParams();
-    const movie = movies.find((m) => m.id === movieID);
+    const { movieId } = useParams();
+    const movie = movies.find((m) => m.id === movieId);
 
-    const [isFavorite, setIsFavorite] = useState(user.favoriteMovies.includes(movie.id));
+    //const [isFavorite, setIsFavorite] = useState(user.favoriteMovies.includes(movie.id));
 
     useEffect(() => {
         setIsFavorite(user.favoriteMovies.includes(movie.id));
         window.scrollTo(0, 0);
-    }, [movieID])
+    }, [movieId])
 
     const addFavorite = () => {
-        fetch(`https://my-flix-movies.herokuapp.com/users/${user.Username}/movies/${movieID}`, {
+        fetch(`https://my-flix-movies.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +45,7 @@ export const MovieView = ({ movies, user, token }) => {
     }
 
     const removeFavorite = () => {
-        fetch(`https://my-flix-movies.herokuapp.com/users/${user.username}/movies/${movieID}`, {
+        fetch(`https://my-flix-movies.herokuapp.com/users/${user.username}/movies/${movie.id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {

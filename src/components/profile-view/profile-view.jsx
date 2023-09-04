@@ -6,11 +6,11 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState(user.Email);
-    const [birthday, setBirthday] = useState(user.Birthday);
-    const favoriteMovies = movies.filter((movie) => {
-        return user.FavoriteMovies.includes(movie.id)
-    });
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
+
+
+    const favoriteMovies = movies.filter(movie => user.favoriteMovies?.includes(movie.id));
 
 
     //Update user
