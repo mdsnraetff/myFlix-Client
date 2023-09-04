@@ -59,12 +59,12 @@ export const MovieView = ({ movies, user, token, setUser }) => {
                 return false;
             }
         })
-            .then(user => {
-                if (user) {
-                    alert("This movie has been added to your favorites");
+            .then((data) => {
+                if (data) {
                     setIsFavorite(false);
                     localStorage.setItem("user", JSON.stringify(data));
                     setUser(data);
+                    alert("This movie has been removed from your favorites");
                 }
             })
             .catch(e => {

@@ -46278,11 +46278,11 @@ const MovieView = ({ movies , user , token , setUser  })=>{
             }
         }).then((response)=>{
             if (response.ok) return response.json();
-        }).then((data1)=>{
-            if (data1) {
+        }).then((data)=>{
+            if (data) {
                 setIsFavorite(true);
-                localStorage.setItem("user", JSON.stringify(data1));
-                setUser(data1);
+                localStorage.setItem("user", JSON.stringify(data));
+                setUser(data);
                 alert("This movie has been added to your favorites");
             }
         }).catch((e)=>{
@@ -46301,12 +46301,12 @@ const MovieView = ({ movies , user , token , setUser  })=>{
                 alert("Error");
                 return false;
             }
-        }).then((user)=>{
-            if (user) {
-                alert("This movie has been added to your favorites");
+        }).then((data)=>{
+            if (data) {
                 setIsFavorite(false);
                 localStorage.setItem("user", JSON.stringify(data));
                 setUser(data);
+                alert("This movie has been removed from your favorites");
             }
         }).catch((e)=>{
             alert(e);
@@ -47182,7 +47182,7 @@ const ProfileView = ({ user , token , movies , onLoggedOut , updateUser  })=>{
                                 columnNumber: 21
                             }, undefined),
                             FavoriteMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                    classname: "mb-5",
+                                    className: "mb-5",
                                     md: 3,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                         movie: movie
