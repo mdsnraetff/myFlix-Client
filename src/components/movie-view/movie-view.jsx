@@ -1,3 +1,4 @@
+import '../movie-view/movie-view.scss'
 import PropTypes from "prop-types";
 import { Button, Col, Card } from "react-bootstrap";
 import { useParams } from "react-router";
@@ -73,7 +74,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     }
 
     return (
-        <Card className="mt-1 mb-1 h-100 bg-secondary text-white">
+        <Card className="movieView">
             <Card.Img variant="top" src={movie.image} />
             <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
@@ -82,16 +83,17 @@ export const MovieView = ({ movies, user, token, setUser }) => {
                 <Card.Text>Bio: {movie.director.bio}</Card.Text>
                 <Card.Text>Genre: {movie.genre.name}</Card.Text>
                 <Card.Text>Description: {movie.genre.description}</Card.Text>
-            </Card.Body>
 
-            <Link to={`/`}>
-                <button className="back-button">Back</button>
-            </Link>
-            {
-                isFavorite ? (
-                    <Button onClick={removeFavorite}>Remove from Favorites</Button>)
-                    : (<Button onClick={addFavorite}>Add to Favorites</Button>)
-            }
+
+                <Link to={`/`}>
+                    <Button className="back-button">Back</Button>
+                </Link>
+                {
+                    isFavorite ? (
+                        <Button className="favs" onClick={removeFavorite}>Remove from Favorites</Button>)
+                        : (<Button className="favs" onClick={addFavorite}>Add to Favorites</Button>)
+                }
+            </Card.Body>
         </Card>)
 }
 MovieView.propTypes = {
