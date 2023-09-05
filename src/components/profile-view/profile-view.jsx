@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, Col, Form, Button } from "react-bootstrap";
+import { Card, Col, Form, Button, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) => {
@@ -8,9 +8,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
-
-
-    let favoriteMovies = movies.filter(movie => user.favoriteMovies.includes(movie.id));
+    const FavoriteMovies = movies.filter((movie) => user.FavoriteMovies?.includes(movie.id));
 
 
     //Update user
@@ -24,7 +22,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
             birthday
         }
 
-        fetch(`https://my-flix-movies.herokuapp.com/users/${user.username}`, {
+        fetch(`https://my-flix-movies.herokuapp.com/users/${user.Username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -52,7 +50,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
     }
     //Delete user
     const deleteUser = () => {
-        fetch(`https://my-flix-movies.herokuapp.com/users/${user.username}`, {
+        fetch(`https://my-flix-movies.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -76,9 +74,9 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
             <Card>
                 <Card.Body>
                     <Card.Title>User Info</Card.Title>
-                    <p>Username: {user.username}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Birthday: {user.birthday}</p>
+                    <p>Username: {user.Username}</p>
+                    <p>Email: {user.Email}</p>
+                    <p>Birthday: {user.Birthday}</p>
                 </Card.Body>
             </Card>
             <Button onClick={() => {
@@ -126,16 +124,16 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                         <Button type="submit">Submit Changes</Button>
                     </Form>
                 </Card.Body>
-            </Card>
 
-            <Col>
-                <h3>Movies You Love:</h3>
-            </Col>
-            {favoriteMovies.map(movie => (
-                <Col classname="mb-3" key={movie.id}>
-                    <MovieCard movie={movie} />
-                </Col>
-            ))}
+
+                <Row className="text-black">
+                    <h3>Movies You Love:</h3>
+                    {FavoriteMovies.map((movie) => (
+                        <Col className="mb-5" key={movie.id} md={3}>
+                            <MovieCard movie={movie}></MovieCard>
+                        </Col>
+
+                    ))} </Row> </Card>
         </>
     )
 
