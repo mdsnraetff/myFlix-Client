@@ -156,20 +156,6 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
-                                        <Row className="my-3">
-                                            <Form>
-                                                <InputGroup>
-                                                    <Form.Control
-                                                        onChange={(e) => setSearch(e.target.value)}
-                                                        aria-label="Search Movie Titles" />
-                                                </InputGroup>
-                                            </Form>
-                                        </Row>
-                                        {movies.filter((movie) => {
-                                            return Search === "" ?
-                                                movie :
-                                                movie.Title.toLowerCase().includes(Search.toLowerCase());
-                                        })}
                                         {movies.map((movie) => (
                                             <Col className="mb-2 d-flex" key={movie.id} md={3}>
                                                 <MovieCard
