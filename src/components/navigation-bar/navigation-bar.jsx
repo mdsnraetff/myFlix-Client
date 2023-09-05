@@ -16,7 +16,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         <Navbar bg="light" expand="lg" className="mb-4" sticky="top">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    Movies App
+                    Welcome to MyFlix
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

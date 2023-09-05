@@ -1,3 +1,4 @@
+import './profile-view.scss';
 import { useState } from "react";
 import { Card, Col, Form, Button, Row } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
@@ -71,23 +72,24 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
     //Delete acct.
     return (
         <>
-            <Card>
+            <Card className="userInfo">
                 <Card.Body>
-                    <Card.Title>User Info</Card.Title>
+                    <Card.Title>Your Profile</Card.Title>
                     <p>Username: {user.Username}</p>
                     <p>Email: {user.Email}</p>
                     <p>Birthday: {user.Birthday}</p>
                 </Card.Body>
-            </Card>
-            <Button onClick={() => {
-                if (confirm("Delete account?")) {
-                    deleteUser();
-                }
-            }}>Delete Account</Button>
+                <Button className="deleteButt" onClick={() => {
+                    if (confirm("Delete account?")) {
+                        deleteUser();
+                    }
+                }}>Delete Account</Button>
 
-            <Card>
+            </Card>
+
+            <Card className="profileUpdate">
                 <Card.Body>
-                    <Card.Title>Update User Info</Card.Title>
+                    <Card.Title>Update Your Info:</Card.Title>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group>
                             <Form.Label>Username:</Form.Label>
@@ -121,12 +123,12 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                 onChange={e => setBirthday(e.target.value)}
                                 required />
                         </Form.Group>
-                        <Button type="submit">Submit Changes</Button>
+                        <Button className="deleteButt" type="submit">Submit Changes</Button>
                     </Form>
                 </Card.Body>
-
-
-                <Row className="text-black">
+            </Card>
+            <Card>
+                <Row className="favMovies">
                     <h3>Movies You Love:</h3>
                     {FavoriteMovies.map((movie) => (
                         <Col className="mb-5" key={movie.id} md={3}>
