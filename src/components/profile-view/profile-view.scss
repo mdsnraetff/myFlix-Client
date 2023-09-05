@@ -1,0 +1,41 @@
+.deleteButt {
+    color: black;
+    background-color: #fff;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.userInfo {
+    position: absolute;
+    left: 150px;
+    width: 545px;
+    height: 50%;
+    padding: 20;
+}
+
+.profileUpdate {
+    position: absolute;
+    right: 140px;
+    width: 755px;
+    height: 58%;
+    padding: 20;
+}
+
+.favMovies {
+    text-align: left;
+    position: absolute;
+    top: 400px;
+}
