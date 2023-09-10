@@ -65,14 +65,14 @@ export const MainView = () => {
     }, [token]);
 
     const movieFilter = () => {
-        let movieFilter = movies;
+        let filteredMovies = movies;
 
         if (selectedGenre) {
-            movieFilter = movieFilter.filter((movie) => movie.genre === selectedGenre);
+            filteredMovies = filteredMovies.filter((movie) => movie.genre === selectedGenre);
         }
 
         if (searchTerm) {
-            movieFilter = movieFilter.filter(
+            filteredMovies = filteredMovies.filter(
                 (movie) =>
                     movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
             )
