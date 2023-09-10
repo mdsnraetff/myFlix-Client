@@ -1,0 +1,6 @@
+My Flix Movie app
+
+-Hosts a list of movies with details including title, description, director and director bio, genre and genre description, and images of the movie.
+-Allows user to sign up with a username, email, password, and D.O.B. 
+-Creates a profile page for the user, where they can change their information.
+-Main page allows users to look through movies and search by title. They can add them to their favorites, and once the movie is added to their favorites, it will appear on their profile page, where they can then remove the movie from their favorites. 
