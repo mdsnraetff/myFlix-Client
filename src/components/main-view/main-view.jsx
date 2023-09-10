@@ -73,10 +73,8 @@ export const MainView = () => {
         }
 
         if (searchTerm) {
-            filteredMovies = filteredMovies.filter(
-                (movie) =>
-                    (movie.genre.toLowerCase().includes(searchTerm.toLowerCase()))
-            )
+            filteredMovies = filteredMovies.filter((movie) => movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
+            );
         }
 
         return filteredMovies;
