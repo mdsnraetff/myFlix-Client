@@ -5,7 +5,7 @@ export const MovieFilter = (props) => {
         <div>
             <input
                 type="text"
-                placeholder="Search For Director"
+                placeholder="Search by Genre"
                 value={props.searchTerm}
                 onChange={(e) => props.setSearchTerm(e.target.value)}
                 style={{ width: "100%", padding: "10px" }} />
