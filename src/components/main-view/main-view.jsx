@@ -22,7 +22,7 @@ export const MainView = () => {
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedGenre, setSelectedGenre] = useState("");
+    const [selectedTitle, setSelectedTitle] = useState("");
 
     const updateUser = (user) => {
         setUser(user);
@@ -68,12 +68,12 @@ export const MainView = () => {
     const movieFilter = () => {
         let filteredMovies = movies;
 
-        if (selectedGenre) {
-            filteredMovies = filteredMovies.filter((movie) => movie.Genre.Name === selectedGenre);
+        if (selectedTitle) {
+            filteredMovies = filteredMovies.filter((movie) => movie.title === selectedTitle);
         };
 
         if (searchTerm) {
-            filteredMovies = filteredMovies.filter((movie) => movie.Genre.Name.includes(searchTerm.toLowerCase())
+            filteredMovies = filteredMovies.filter((movie) => movie.title.includes(searchTerm.toLowerCase())
             );
         }
 
@@ -95,8 +95,8 @@ export const MainView = () => {
             />
             <Container>
                 <MovieFilter
-                    selectedGenre={selectedGenre}
-                    setSelectedGenre={setSelectedGenre}
+                    selectedTitle={selectedTitle}
+                    setSelectedTitle={setSelectedTitle}
                     searchTerm={searchTerm}
                     setSearchTerm={setSearchTerm} />
                 <Row className="justify-content-md-center">
