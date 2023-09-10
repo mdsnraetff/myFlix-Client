@@ -8,7 +8,7 @@ export const MovieFilter = (props) => {
                 placeholder="Search by Genre"
                 value={props.searchTerm}
                 onChange={(e) => props.setSearchTerm(e.target.value)}
-                style={{ width: "100%", padding: "10px" }} />
+                style={{ width: "30%", padding: "10px" }} />
         </div>
     )
 }
