@@ -9,7 +9,8 @@ import { MovieFilter } from "../movie-filter/movie-filter";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { BrowserRouter, Routes, Route, Navigate, Container } from "react-router-dom";
+import Container from "react-bootstrap/Container"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { InputGroup, Form } from "react-bootstrap";
 
 
