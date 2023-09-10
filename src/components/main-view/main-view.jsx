@@ -79,7 +79,7 @@ export const MainView = () => {
         }
 
         return filteredMovies;
-    }
+    };
 
 
     const filteredMovies = movieFilter();
@@ -180,11 +180,11 @@ export const MainView = () => {
                                 <>
                                     {!user ? (
                                         <Navigate to="/login" replace />
-                                    ) : movies.length === 0 ? (
+                                    ) : filteredMovies.length === 0 ? (
                                         <Col>The list is empty!</Col>
                                     ) : (
                                         <>
-                                            {movies.map((movie) => (
+                                            {filteredMovies.map((movie) => (
                                                 <Col className="mb-2 d-flex" key={movie.id} md={3}>
                                                     <MovieCard
                                                         movie={movie} />
