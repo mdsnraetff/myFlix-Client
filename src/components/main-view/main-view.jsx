@@ -66,22 +66,22 @@ export const MainView = () => {
     }, [token]);
 
     const movieFilter = () => {
-        let filteredMovies = movies;
+        let moviesFiltered = movies;
 
         if (selectedTitle) {
-            filteredMovies = filteredMovies.filter((movie) => movie.title === selectedTitle);
+            moviesFiltered = moviesFiltered.filter((movie) => movie.title === selectedTitle);
         };
 
         if (searchTerm) {
-            filteredMovies = filteredMovies.filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+            moviesFiltered = moviesFiltered.filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
 
-        return filteredMovies;
+        return moviesFiltered;
     };
 
 
-    const filteredMovies = movieFilter();
+    const moviesFiltered = movieFilter();
 
     return (
         <BrowserRouter>
@@ -179,11 +179,11 @@ export const MainView = () => {
                                 <>
                                     {!user ? (
                                         <Navigate to="/login" replace />
-                                    ) : filteredMovies.length === 0 ? (
+                                    ) : moviesFiltered.length === 0 ? (
                                         <Col>The list is empty!</Col>
                                     ) : (
                                         <>
-                                            {filteredMovies.map((movie) => (
+                                            {moviesFiltered.map((movie) => (
                                                 <Col className="mb-2 d-flex" key={movie.id} md={3}>
                                                     <MovieCard
                                                         movie={movie} />
