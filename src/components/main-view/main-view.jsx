@@ -69,11 +69,11 @@ export const MainView = () => {
         let filteredMovies = movies;
 
         if (selectedGenre) {
-            filteredMovies = filteredMovies.filter((movie) => movie.genre === selectedGenre);
-        }
+            filteredMovies = filteredMovies.filter((movie) => movie.Genre.Name === selectedGenre);
+        };
 
         if (searchTerm) {
-            filteredMovies = filteredMovies.filter((movie) => movie.genre.includes(searchTerm.toLowerCase())
+            filteredMovies = filteredMovies.filter((movie) => movie.Genre.Name.includes(searchTerm.toLowerCase())
             );
         }
 
